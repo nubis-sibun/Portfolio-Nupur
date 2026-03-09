@@ -34,11 +34,11 @@ let globalTime = 0;
 
 // Requested Palette (Plum, Dark Blue, Orange, Red-Brown)
 const palette = [
-    '#ffceebff', // Muted Plum
-    '#d6bbffff', // Dark Purple-Grey
-    '#ffa657ff', // Sandy Orange
-    '#ff8c80ff', // Terra Cotta
-    '#b09cffff'  // Deep Slate
+    '#82f4b1', // Muted Plum
+    '#30c67c', // Dark Purple-Grey
+    '#6fe3e1', // Sandy Orange
+    '#5257e5' // Terra Cotta
+
 ];
 
 // Helper to convert hex to rgb for opacity control
@@ -63,7 +63,7 @@ class Particle {
 
         // Calculate the ideal distance from center
         const minRadius = 250;
-        const maxRadius = 650; // Extend further out
+        const maxRadius = 750; // Extend further out
         const radiusStep = (maxRadius - minRadius) / totalDots;
         const idealRadius = minRadius + (dotIndex * radiusStep);
 

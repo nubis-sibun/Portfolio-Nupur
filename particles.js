@@ -1,171 +1,140 @@
-const canvas = document.getElementById('particle-canvas');
-const ctx = canvas.getContext('2d');
+/* ===========================
+   Nupur Portfolio — Scripts
+   Cursor, Nav, Hamburger, Reveal, Modal, Particles
+   =========================== */
 
-let width, height;
-let particles = [];
-// Configuration for the radial pattern
-// More rays, more density to look like lines
-const rays = 35;            // Increased rays for defined lines
-const dotsPerRay = 15;      // Dots along each ray
-const particleCount = rays * dotsPerRay;
+// ---- Custom Cursor ----
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
 
-let mouse = { x: null, y: null };
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
-// Resize handling
-function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+function animateCursor() {
+    rx += (mx - rx) * 0.14;
+    ry += (my - ry) * 0.14;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+    cursorRing.style.left = rx + 'px';
+    cursorRing.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a,button,.clickable').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursor.style.width = '16px'; cursor.style.height = '16px';
+        cursorRing.style.width = '52px'; cursorRing.style.height = '52px';
+        cursorRing.style.borderColor = 'var(--blue)';
+    });
+    el.addEventListener('mouseleave', () => {
+        cursor.style.width = '10px'; cursor.style.height = '10px';
+        cursorRing.style.width = '36px'; cursorRing.style.height = '36px';
+        cursorRing.style.borderColor = 'var(--ink)';
+    });
+});
+
+// ---- Nav Scroll ----
+window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ---- Hamburger ----
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+});
+document.getElementById('closeMenu').addEventListener('click', closeM);
+document.querySelectorAll('.m-links a').forEach(a => a.addEventListener('click', closeM));
+
+function closeM() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
 }
 
+// ---- Scroll Reveal ----
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+            e.target.style.transitionDelay = (i * 0.05) + 's';
+            e.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ---- PDF Modal ----
+function openModal(url) {
+    document.getElementById('pdf-iframe').src = url + '#toolbar=0&navpanes=0';
+    document.getElementById('pdf-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+    if (e) e.preventDefault();
+    document.getElementById('pdf-modal').classList.remove('active');
+    setTimeout(() => document.getElementById('pdf-iframe').src = '', 350);
+    document.body.style.overflow = '';
+}
+
+// ---- Particle Canvas ----
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let w, h, particles = [], mouse = { x: null, y: null };
+const RAYS = 28, DOTS = 12;
+const palette = ['#1A3FD8', '#3B5BDB', '#6B6560', '#0D0D0D'];
+
+function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+}
 window.addEventListener('resize', resize);
 resize();
 
-// Mouse tracking
-window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+mouse.x = w / 2;
+mouse.y = h / 2;
 
-// Initial mouse position (center)
-mouse.x = width / 2;
-mouse.y = height / 2;
-
-let globalTime = 0;
-
-// Requested Palette (Plum, Dark Blue, Orange, Red-Brown)
-const palette = [
-    '#82f4b1', // Muted Plum
-    '#30c67c', // Dark Purple-Grey
-    '#6fe3e1', // Sandy Orange
-    '#5257e5' // Terra Cotta
-
-];
-
-// Helper to convert hex to rgb for opacity control
-function hexToRgb(hex) {
-    const bigint = parseInt(hex.slice(1), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return `${r}, ${g}, ${b}`;
+function hexRgb(hex) {
+    const b = parseInt(hex.slice(1), 16);
+    return `${(b >> 16) & 255},${(b >> 8) & 255},${b & 255}`;
 }
 
-class Particle {
-    constructor(rayIndex, dotIndex, totalRays, totalDots) {
-        // Initialize at random position
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-
-        // Pattern Positioning (The "Ray" State)
-        // ------------------------------------------
-        // Calculate the ideal angle for this ray
-        const idealAngle = (rayIndex / totalRays) * Math.PI * 2;
-
-        // Calculate the ideal distance from center
-        const minRadius = 250;
-        const maxRadius = 750; // Extend further out
-        const radiusStep = (maxRadius - minRadius) / totalDots;
-        const idealRadius = minRadius + (dotIndex * radiusStep);
-
-        // Pattern Imperfection (The "Random" State)
-        // -----------------------------------------
-
-        // TIGHTER ANGLE jitter to sharpen the rays
-        // Previously 0.15, now much smaller to keep them in lines
-        this.angleOffset = (Math.random() - 0.5) * 0.02;
-
-        // Randomize radius more significantly along the ray so they aren't perfect rings
-        this.radiusOffset = (Math.random() - 0.5) * (radiusStep * 0.8);
-
-        this.baseAngle = idealAngle + this.angleOffset;
-        this.baseRadius = idealRadius + this.radiusOffset;
-
-        // Store unique offset for per-ray pulsing
-        this.rayIndex = rayIndex;
-        this.dotIndex = dotIndex;
-
-        // Inertia (smooth movement to target)
-        this.easing = 0.05 + Math.random() * 0.05;
-
-        // Size: Particles get slightly larger further out
-        this.size = 1.5 + (dotIndex / totalDots) * 2;
-
-        // Color Props
-        // Assign a random color from the palette
-        this.colorHex = palette[Math.floor(Math.random() * palette.length)];
-        this.colorRgb = hexToRgb(this.colorHex);
-
-        // Individual pulse offset for opacity
-        this.pulseOffset = Math.random() * Math.PI * 2;
+class P {
+    constructor(ri, di) {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        const ang = (ri / RAYS) * Math.PI * 2;
+        const minR = 200, maxR = 700;
+        const step = (maxR - minR) / DOTS;
+        this.aOff = (Math.random() - 0.5) * 0.025;
+        this.rOff = (Math.random() - 0.5) * (step * 0.7);
+        this.baseAngle = ang + this.aOff;
+        this.baseRadius = minR + di * step + this.rOff;
+        this.easing = 0.04 + Math.random() * 0.04;
+        this.size = 1 + (di / DOTS) * 2.5;
+        this.ri = ri;
+        this.di = di;
+        this.rgb = hexRgb(palette[Math.floor(Math.random() * palette.length)]);
+        this.phase = Math.random() * Math.PI * 2;
     }
 
-    update() {
-        // 1. Calculate Target Position in the Pattern
-        // -------------------------------------------
-
-        // ROTATION: Organic back-and-forth (Clockwise <-> Anti-clockwise)
-        // Uses variable sine waves to create a random-feeling slow drift
-        const globalRotation = Math.sin(globalTime * 0.15) * 0.4 + Math.sin(globalTime * 0.42) * 0.15;
-
-        // RAY PULSE: Instead of a ripple ring, we want the whole ray to breathe or move
-        // We use the rayIndex to offset the phase, so each ray pulses independently
-        // and we use dotIndex to make it flow outward
-
-        // This pulse affects the RADIUS (pushing out and in)
-        // Coordinated movement along the ray
-        const rayPulse = Math.sin(globalTime * 2 + this.rayIndex * 0.5) * 20;
-
-        // Adding a flow movement along the ray
-        const flow = Math.sin(globalTime * 3 + this.dotIndex * 0.2) * 5;
-
-        const linearRadius = this.baseRadius + rayPulse + flow;
-        const currentAngle = this.baseAngle + globalRotation;
-
-        // SHAPE TRANSFORMATION: Circle -> Rounded Square (Squircle)
-        // ---------------------------------------------------------
-        // We use the Superellipse formula to stretch the radius at the corners
-        // Formula: scale = 1 / ( |cos(theta)|^n + |sin(theta)|^n )^(1/n)
-        // n = 2 is a circle, n = 4 is a rounded square
-        const roundness = 4; // Adjustable: Higher = sharper corners
-        const absCos = Math.abs(Math.cos(currentAngle));
-        const absSin = Math.abs(Math.sin(currentAngle));
-
-        // Calculate scale factor to morph circle radius into square radius
-        const shapeScale = 1 / Math.pow(Math.pow(absCos, roundness) + Math.pow(absSin, roundness), 1 / roundness);
-
-        // Apply shape scale to the radius
-        const squareRadius = linearRadius * shapeScale;
-
-        // Calculate where this particle *wants* to be
-        const targetX = mouse.x + Math.cos(currentAngle) * squareRadius;
-        const targetY = mouse.y + Math.sin(currentAngle) * squareRadius;
-
-        // 2. Move Particle with Inertia
-        this.x += (targetX - this.x) * this.easing;
-        this.y += (targetY - this.y) * this.easing;
-
-        // 3. SIZE ANIMATION (Traveling Wave)
-        // ----------------------------------
-        // Base size logic: larger outside (preserved but animated)
-        // We create a "wave" of size that travels from center to outside (or vice versa)
-        // by offsetting sin wave with dotIndex.
-
-        const sizeWave = Math.sin(globalTime * 4 - this.dotIndex * 0.5); // " - dotIndex" makes wave move out
-
-        // Map wave (-1 to 1) to a size range, e.g., 0.5x to 2.5x original
-        // We also keep the "larger outer" trend as a baseline
-        const baseSizeMetric = 1.5 + (this.dotIndex / 15) * 2; // Original static logic reference
-
-        // Combine baseline with wave
-        this.size = baseSizeMetric + (sizeWave * 1.5);
-
-        // Clamp minimum size so they don't disappear negatively
-        if (this.size < 0.5) this.size = 0.5;
-
-        // 4. Color Logic
-        // Pulse opacity for "breathing" effect
-        const opacity = 0.6 + Math.sin(globalTime * 2 + this.pulseOffset) * 0.2;
-        this.color = `rgba(${this.colorRgb}, ${opacity})`;
+    update(t) {
+        const rot = Math.sin(t * 0.12) * 0.3 + Math.sin(t * 0.38) * 0.1;
+        const pulse = Math.sin(t * 1.8 + this.ri * 0.5) * 18;
+        const flow = Math.sin(t * 2.8 + this.di * 0.2) * 4;
+        const r = this.baseRadius + pulse + flow;
+        const a = this.baseAngle + rot;
+        const n = 4;
+        const sc = 1 / Math.pow(Math.pow(Math.abs(Math.cos(a)), n) + Math.pow(Math.abs(Math.sin(a)), n), 1 / n);
+        const tx = mouse.x + Math.cos(a) * r * sc;
+        const ty = mouse.y + Math.sin(a) * r * sc;
+        this.x += (tx - this.x) * this.easing;
+        this.y += (ty - this.y) * this.easing;
+        const sw = Math.sin(t * 3.5 - this.di * 0.5);
+        this.size = Math.max(0.4, (1 + (this.di / DOTS) * 2) + sw * 1.2);
+        const op = Math.max(0, Math.min(0.45, 0.25 + Math.sin(t * 1.5 + this.phase) * 0.08));
+        this.color = `rgba(${this.rgb},${op})`;
     }
 
     draw() {
@@ -176,27 +145,17 @@ class Particle {
     }
 }
 
-function init() {
-    particles = [];
-    // Create particles in a radial grid pattern
-    for (let i = 0; i < rays; i++) {
-        for (let j = 0; j < dotsPerRay; j++) {
-            particles.push(new Particle(i, j, rays, dotsPerRay));
-        }
+for (let i = 0; i < RAYS; i++) {
+    for (let j = 0; j < DOTS; j++) {
+        particles.push(new P(i, j));
     }
 }
 
-function animate() {
-    ctx.clearRect(0, 0, width, height);
-    globalTime += 0.01;
-
-    particles.forEach(p => {
-        p.update();
-        p.draw();
-    });
-
-    requestAnimationFrame(animate);
+let t = 0;
+function loop() {
+    ctx.clearRect(0, 0, w, h);
+    t += 0.01;
+    particles.forEach(p => { p.update(t); p.draw(); });
+    requestAnimationFrame(loop);
 }
-
-init();
-animate();
+loop();

@@ -4,387 +4,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Nupur Biswas - Multidisciplinary Designer, Design Enthusiast, and Business Consultant.">
-    <title>Nupur Biswas | Design & Experience</title>
+    <meta name="description" content="Nupur Biswas — Systems Designer making design performance measurable.">
+    <title>Nupur Biswas | Systems Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container header-container">
-            <div class="logo">
-                <h1>NUPUR BISWAS</h1>
-                <p class="subtitle">Systems | Design | Experience | Product</p>
-            </div>
-
-            <nav class="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#journey">Journey</a></li>
-                    <li><a href="#offerings">Offerings</a></li>
-                    <li><a href="#reach-out" class="cta-link">Reach Out</a></li>
-                </ul>
-            </nav>
-
-            <div class="hamburger">
-                <i class="ri-menu-line"></i>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu">
-        <div class="close-menu">
-            <i class="ri-close-line"></i>
-        </div>
-        <ul class="mobile-nav-links">
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-logo">Nupur<span>.</span></div>
+        <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#work">Work</a></li>
-            <li><a href="#journey">Journey</a></li>
+            <li><a href="#offerings">Offerings</a></li>
+            <li><a href="#reach-out" class="nav-cta">Reach Out</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="close-btn" id="closeMenu"><i class="ri-close-line"></i></div>
+        <ul class="m-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#work">Work</a></li>
             <li><a href="#offerings">Offerings</a></li>
             <li><a href="#reach-out">Reach Out</a></li>
         </ul>
     </div>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="profile-image">
-                        <img src="assets/hero-profile.jpg" alt="Nupur Biswas">
-                    </div>
-                    <h2 class="hero-title">Hi! I am Nupur</h2>
-                    <p class="hero-description">
-                        I am a Systems Designer dedicated to making design performance measurable. I bridge the gap
-                        between creativity and business outcomes by building robust systems, SOPs, and workflows that
-                        allow design teams to move from intuition-led effort to clarity-driven execution. I specialize
-                        in Design Operations and Systems Design, focusing on how inputs, people, and processes shape
-                        commercial outcomes.
-                    </p>
 
-                    <div class="problem-statement">
-                        <p class="highlight">Most organizations don't struggle with a lack of design talent.</p>
-                        <p>They struggle because great effort doesn't translate into measurable business outcomes.</p>
-                        <p class="strong">I help fix that.</p>
-                    </div>
-
-                    <div class="focus-areas">
-                        <h3>My work focuses on solving problems like:</h3>
-                        <ul>
-                            <li>Design teams working hard but missing business numbers</li>
-                            <li>Subjective feedback loops causing rework and inefficiency</li>
-                            <li>Strong creativity without structure, measurement, or accountability</li>
-                            <li>Processes that exist on paper but don't translate on the ground</li>
-                        </ul>
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <div class="hero-left">
+                <p class="hero-tag">Systems Designer · Design Ops · Business Consulting</p>
+                <h1 class="hero-title">Making design <em>measurable</em> — not just beautiful.</h1>
+                <p class="hero-desc">I bridge the gap between creativity and business outcomes by building systems,
+                    SOPs, and workflows that move design teams from intuition-led effort to clarity-driven execution.
+                </p>
+                <div class="hero-actions">
+                    <a href="#work" class="btn-primary">View Work <i class="ri-arrow-right-line"></i></a>
+                    <a href="#reach-out" class="btn-outline">Reach Out</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="profile-wrap">
+                    <img src="assets/hero-profile.png" alt="Nupur Biswas"
+                        onerror="this.style.background='linear-gradient(135deg,#E8EDFF,#1A3FD8)';this.style.height='100%'">
+                    <div class="profile-badge">
+                        Systems Designer<br>10+ Years Experience
                     </div>
                 </div>
-
-                <div class="methodology">
-                    <h3 class="section-label">How I Work</h3>
-                    <p class="methodology-subtitle">My approach is grounded in a simple but rigorous problem-solving
-                        framework:</p>
-                    <div class="framework-flow">
-                        <span class="step">Empathise</span> <span class="arrow">→</span>
-                        <span class="step">Organise</span> <span class="arrow">→</span>
-                        <span class="step">Problem Solve</span>
+                <div class="stat-strip">
+                    <div class="stat-item">
+                        <span class="stat-num">3×</span>
+                        <span class="stat-label">Conv. uplift</span>
                     </div>
-                    <p class="methodology-desc">
-                        I begin by deeply understanding people, context, constraints, and intent. I then organize
-                        complexity into clear systems, workflows, and decision frameworks. Finally, I solve for
-                        impact—by aligning time, effort, and resources with the outcomes the business actually cares
-                        about. This allows teams to move from intuition-led effort to clarity-driven execution.
-                    </p>
+                    <div class="stat-item">
+                        <span class="stat-num">10+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">3</span>
+                        <span class="stat-label">Verticals</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Recent Work Section -->
-        <section id="work" class="work-section">
-            <div class="container">
-                <h3 class="section-heading-underline">RECENT WORK</h3>
-
-                <!-- Project 1 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop"
-                            alt="Kama Jewelers Project">
-                    </div>
-                    <div class="project-info">
-                        <h4 class="client-name">leading B2B Diamond Jewellery Design House - with Xto10X</h4>
-                        <p class="project-subtitle">Design Excellence & Business Process Transformation</p>
-
-                        <div class="metrics">
-                            <span class="metric-label">Conversion improvement:</span>
-                            <span class="metric-value">11% → 35-40%</span>
-                        </div>
-
-                        <p class="project-desc">Systematized design processes and objective decision frameworks —
-                            transforming conversion rates from 11% to 40% by aligning creative effort with measurable
-                            business outcomes</p>
-
-                        <p class="project-skills">Skills: Design Strategy - Service Design - Design Ops - UX Strategy -
-                            Business Impact Enablement</p>
-
-                        <a href="javascript:void(0)" class="view-case-study" onclick="openModal('KAMA FINAL.pdf')">+
-                            View Case Study</a>
-                    </div>
-                </article>
-
-                <!-- Project 2 -->
-                <article class="project-card reverse">
-                    <div class="project-image">
-                        <img src="assets/Gemini_Generated_Image_eedbjleedbjleedb.png" alt="Wakefit Project">
-                    </div>
-                    <div class="project-info">
-                        <h4 class="client-name">WAKEFIT</h4>
-                        <p class="project-subtitle">Strategic Design Content Making</p>
-
-                        <div class="metrics">
-                            <span class="metric-label">Expected Outcome:</span>
-                            <span class="metric-value">Scalable Design Excellence Framework</span>
-                        </div>
-
-                        <p class="project-desc">Development of a comprehensive L&D curriculum and professional
-                            capability frameworks — enabling scalable design excellence by bridging the gap between
-                            creative knowledge and outcome-driven execution
-                        </p>
-
-                        <p class="project-skills">Skills: Design Strategy - Service Design - Design Ops - UX Strategy -
-                            Business Impact Enablement</p>
-
-                        <a href="#reach-out" class="view-case-study">reach out for Quick View</a>
-                    </div>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?q=80&w=600&auto=format&fit=crop"
-                            alt="Luna Forex Mobile App Design">
-                    </div>
-                    <div class="project-info">
-                        <h4 class="client-name">LUNA FOREX</h4>
-                        <p class="project-subtitle">Designing the UX of a forex exchange app</p>
-
-                        <div class="metrics">
-                            <span class="metric-label">Expected Outcome:</span>
-                            <span class="metric-value">Strategic UX Gap Discovery</span>
-                        </div>
-
-                        <p class="project-desc">Application of systems thinking to complex information architecture and
-                            UX strategy — organizing high-density financial data into intuitive user journeys that
-                            prioritize functional performance and clarity.
-                        </p>
-
-                        <p class="project-skills">Skills: Design Strategy - Service Design - Design Ops - UX Strategy -
-                            Business Impact Enablement</p>
-                        <a href="javascript:void(0)" class="view-case-study" onclick="openModal('LUNA FINAL.pdf')">+
-                            View Case Study</a>
-                    </div>
-                </article>
-
-                <!-- Project 4 -->
-                <article class="project-card reverse">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=800&auto=format&fit=crop"
-                            alt="Wakefit Project">
-                    </div>
-                    <div class="project-info">
-                        <h4 class="client-name">SPATIAL DESIGN ARCHIVE</h4>
-                        <p class="project-subtitle">A Decade of Design Excellence</p>
-
-                        <div class="metrics">
-                            <span class="metric-label">Outcome:</span>
-                            <span class="metric-value">10+ Years Design Mastery</span>
-                        </div>
-
-                        <p class="project-desc">Curated retrospective of a decade-long career in spatial and interior
-                            design — showcasing the foundational design rigor and technical execution that now informs
-                            my systems-led approach to business consulting.
-                        </p>
-
-                        <p class="project-skills">Skills: Spatial Design - Interior Design - 3D Visualization -
-                            Technical Documentation - Design Foundations</p>
-
-                        <a href="#" class="view-case-study">Coming Soon</a>
-                    </div>
-                </article>
+        <!-- PROBLEM BAND -->
+        <div class="problem-band">
+            <div class="problem-item">
+                <div class="problem-icon"><i class="ri-group-line"></i></div>
+                <h4>Great talent, poor outcomes</h4>
+                <p>Most orgs don't lack design skill — they lack the system to convert effort into results.</p>
             </div>
-        </section>
+            <div class="problem-divider"></div>
+            <div class="problem-item">
+                <div class="problem-icon"><i class="ri-git-branch-line"></i></div>
+                <h4>Broken handoffs</h4>
+                <p>Intent fractures between Sales → Design → Production → Delivery. Critical context gets lost.</p>
+            </div>
+            <div class="problem-divider"></div>
+            <div class="problem-item">
+                <div class="problem-icon"><i class="ri-bar-chart-box-line"></i></div>
+                <h4>I help fix that</h4>
+                <p>I build the systems, SOPs, and frameworks that make design reliable, scalable, and measurable.</p>
+            </div>
+        </div>
 
-        <!-- Professional Journey Section -->
-        <section id="journey" class="journey-section">
+        <!-- HOW I WORK -->
+        <section class="section alt-bg">
             <div class="container">
-                <h3 class="section-heading-underline">PROFESSIONAL JOURNEY</h3>
-
-                <div class="timeline">
-                    <!-- Item 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <span class="year">2014-2017</span>
-                            <h4 class="role">Early Foundations — Industrial, Interior & Spatial Design</h4>
-                        </div>
-                        <ul class="timeline-details">
-                            <li>Started as an individual contributor in interiors, furniture and spatial design.</li>
-                            <li>Built strong fundamentals in problem-solving, user understanding, aesthetics and
-                                functional clarity.</li>
-                            <li>Developed early curiosity for systems thinking and how inputs, people and processes
-                                shape outcomes.</li>
-                        </ul>
+                <div class="hiw-intro">
+                    <div>
+                        <p class="section-label">Methodology</p>
+                        <h2 class="section-title">How I<br><em style="font-style:italic;color:var(--blue)">work</em>
+                        </h2>
+                        <p class="section-sub" style="margin-top:16px">Design is the central nervous system of every
+                            product lifecycle. I map where it's working — and where it's not.</p>
                     </div>
-
-                    <!-- Item 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <span class="year">2017-2019</span>
-                            <h4 class="role">Moving into Design Management & Learning Design</h4>
+                    <div class="hiw-visual">
+                        <div class="process-flow-v2 reveal">
+                            <p class="flow-label">The design-driven business lifecycle</p>
+                            <div class="flow-track">
+                                <div class="flow-node-v2">
+                                    <div class="node-pill">Sales / Brief</div>
+                                </div>
+                                <div class="flow-connector">
+                                    <span class="connector-label">Inputs</span>
+                                    <div class="flow-connector-line"></div>
+                                </div>
+                                <div class="flow-node-v2">
+                                    <div class="node-pill core">DESIGN</div>
+                                </div>
+                                <div class="flow-connector">
+                                    <span class="connector-label">Structure</span>
+                                    <div class="flow-connector-line"></div>
+                                </div>
+                                <div class="flow-node-v2">
+                                    <div class="node-pill">Production</div>
+                                </div>
+                                <div class="flow-connector">
+                                    <span class="connector-label">Experience</span>
+                                    <div class="flow-connector-line"></div>
+                                </div>
+                                <div class="flow-node-v2">
+                                    <div class="node-pill">Delivery</div>
+                                </div>
+                            </div>
                         </div>
-                        <ul class="timeline-details">
-                            <li>Transitioned into leadership roles at Urban Ladder.</li>
-                            <li>Designed training programs, structured design processes and led teams.</li>
-                            <li>Strengthened understanding of how design performance grows when people, knowledge and
-                                workflows align.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <span class="year">2019-2023</span>
-                            <h4 class="role">Entrepreneurship & System Building</h4>
+                        <div class="process-insight reveal">
+                            Design doesn't operate in isolation — it's the connector that determines whether every other
+                            stage succeeds or fails.
                         </div>
-                        <ul class="timeline-details">
-                            <li>Co-founded a design practice and later led design for Toscano and Urban Ladder
-                                (relaunch).</li>
-                            <li>Designed SOPs, stage-gates, workflows, capability frameworks and brand experiences.</li>
-                            <li>Deepened my ability to build systems, teams and processes that make design measurable
-                                and scalable.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <span class="year">2023-2024</span>
-                            <h4 class="role">The Leap into UX, Research & Teaching</h4>
-                        </div>
-                        <ul class="timeline-details">
-                            <li>Stepped away from corporate roles to formally study UX design and research.</li>
-                            <li>Strengthened empathy, problem-framing, journey mapping, IA and structured thinking.</li>
-                            <li>Simultaneously taught design at an academy and worked on selective spatial projects.
-                            </li>
-                            <li>This phase sharpened my ability to organize complexity and solve with clarity and
-                                intent.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Item 5 -->
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <span class="year">2025-Present</span>
-                            <h4 class="role">Applying Everything Through Design-to-Business Consulting</h4>
-                        </div>
-                        <ul class="timeline-details">
-                            <li>Began consulting organisations on improving design effort -> business outcome alignment.
-                            </li>
-                            <li>Worked with <strong>Xto10X</strong> to raise design-to-selection
-                                <strong>conversions from 8-11% -> 35-40%</strong>.
-                            </li>
-                            <li>Worked with <strong>Wakefit</strong> to build a complete <strong>L&D curriculum</strong>
-                                for modular kitchens, wardrobes and spatial consulting.</li>
-                            <li>Continued individual residential consulting while refining frameworks, systems and
-                                research-driven methods.</li>
-                        </ul>
                     </div>
                 </div>
 
-                <div class="focus-today">
-                    <h4>My Focus Today</h4>
-                    <ul>
-                        <li>I now work at the intersection of design, systems and business performance. I help teams
+                <!-- Gap Visualizer -->
+                <div class="reveal" style="margin-bottom:48px">
+                    <h3 class="hiw-section-heading">Where the system fractures</h3>
+                    <p class="hiw-section-sub">The further from design, the more intent gets lost. Here's what I find in
+                        most orgs:</p>
+                    <div class="gap-visualizer">
+                        <p class="flow-label">Information survival rate across the pipeline</p>
+                        <div class="gap-pipeline">
+                            <div class="gap-row">
+                                <div class="gap-stage-name">Sales / Brief</div>
+                                <div class="gap-bar-wrap">
+                                    <div class="gap-bar sales">85% of intent captured</div>
+                                </div>
+                            </div>
+                            <div class="gap-connector-row">
+                                <div></div>
+                                <div class="gap-connector-visual">
+                                    <div class="gap-connector-line"></div>
+                                    <div class="gap-badge"><i class="ri-error-warning-fill"></i> Information Loss</div>
+                                </div>
+                            </div>
+                            <div class="gap-row">
+                                <div class="gap-stage-name">Design</div>
+                                <div class="gap-bar-wrap">
+                                    <div class="gap-bar design">60% translated</div>
+                                </div>
+                            </div>
+                            <div class="gap-connector-row">
+                                <div></div>
+                                <div class="gap-connector-visual">
+                                    <div class="gap-connector-line"></div>
+                                    <div class="gap-badge"><i class="ri-error-warning-fill"></i> Misunderstood Intent
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gap-row">
+                                <div class="gap-stage-name">Production</div>
+                                <div class="gap-bar-wrap">
+                                    <div class="gap-bar production">40% executed correctly</div>
+                                </div>
+                            </div>
+                            <div class="gap-connector-row">
+                                <div></div>
+                                <div class="gap-connector-visual">
+                                    <div class="gap-connector-line"></div>
+                                    <div class="gap-badge"><i class="ri-error-warning-fill"></i> Execution Friction
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gap-row">
+                                <div class="gap-stage-name">Delivery</div>
+                                <div class="gap-bar-wrap">
+                                    <div class="gap-bar delivery">~25% of original intent</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Steps -->
+                <div class="reveal" style="margin-bottom:32px">
+                    <h3 class="hiw-section-heading" style="margin-bottom:32px">My process to fix it</h3>
+                    <div class="steps-v2">
+                        <div class="step-card">
+                            <div class="step-num-v2">01</div>
+                            <h4>Understand</h4>
+                            <p>Map the current workflow from requirement gathering to final delivery — no assumptions,
+                                only observation.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num-v2">02</div>
+                            <h4>Analyse</h4>
+                            <p>Evaluate how teams interact, where tools create friction, and how design touchpoints
+                                influence each stage.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num-v2">03</div>
+                            <h4>Identify</h4>
+                            <p>Locate process gaps, undocumented workflows, and the exact points where design intent
+                                gets lost.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num-v2">04</div>
+                            <h4>Organise</h4>
+                            <p>Restructure workflows, build SOPs, and create systems so design reliably supports the
+                                entire pipeline.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outcome -->
+                <div class="outcome-box reveal">
+                    <div>
+                        <h3>The goal: make design reliable across the system</h3>
+                        <p>So teams work with less friction, clearer direction, and stronger results.</p>
+                    </div>
+                    <ul class="outcome-checks">
+                        <li>
+                            <div class="check-icon"><i class="ri-check-line"></i></div>Clearer Communication
+                        </li>
+                        <li>
+                            <div class="check-icon"><i class="ri-check-line"></i></div>Smoother Execution
+                        </li>
+                        <li>
+                            <div class="check-icon"><i class="ri-check-line"></i></div>Measurable Results
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK -->
+        <section id="work" class="section">
+            <div class="container">
+                <p class="section-label">Selected Projects</p>
+                <h2 class="section-title" style="margin-bottom:48px">Recent <em
+                        style="font-style:italic;color:var(--blue)">work</em></h2>
+
+                <div class="work-grid">
+                    <!-- Project 1 -->
+                    <article class="project-row reveal">
+                        <div class="project-img">
+                            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop"
+                                alt="Diamond Jewellery Design House">
+                        </div>
+                        <div class="project-content">
+                            <p class="project-tag">Design Ops · Business Transformation · with Xto10X</p>
+                            <h3 class="project-title">B2B Diamond Jewellery Design House</h3>
+                            <p class="project-type">Design Excellence & Process Transformation</p>
+                            <div class="metric-chip">
+                                <span class="label">Conversion Rate</span>
+                                <span class="value">11% → 35–40%</span>
+                            </div>
+                            <p class="project-desc">Systematized design processes and built objective decision
+                                frameworks — transforming selection conversion rates by aligning creative effort with
+                                measurable business outcomes.</p>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Design Strategy</span>
+                                <span class="skill-tag">Service Design</span>
+                                <span class="skill-tag">Design Ops</span>
+                                <span class="skill-tag">UX Strategy</span>
+                                <span class="skill-tag">Business Impact</span>
+                            </div>
+                            <a href="javascript:void(0)" class="case-link"
+                                onclick="openModal('assets/KAMA FINAL.pdf')">View
+                                Case Study <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-row reveal">
+                        <div class="project-img">
+                            <img src="https://images.unsplash.com/photo-1614028674026-a65e31bfd27c?q=80&w=600&auto=format&fit=crop"
+                                alt="Luna Forex">
+                        </div>
+                        <div class="project-content">
+                            <p class="project-tag">UX Research · Information Architecture · Exploratory</p>
+                            <h3 class="project-title">Luna Forex</h3>
+                            <p class="project-type">Forex Exchange App — UX Strategy (exploratory research project)</p>
+                            <div class="metric-chip">
+                                <span class="label">Outcome</span>
+                                <span class="value">Strategic UX Gap Discovery</span>
+                            </div>
+                            <p class="project-desc">Applied systems thinking to complex information architecture —
+                                organizing high-density financial data into intuitive user journeys that prioritize
+                                functional performance and clarity.</p>
+                            <div class="skill-tags">
+                                <span class="skill-tag">UX Strategy</span>
+                                <span class="skill-tag">IA Design</span>
+                                <span class="skill-tag">Systems Thinking</span>
+                                <span class="skill-tag">Research</span>
+                            </div>
+                            <a href="javascript:void(0)" class="case-link"
+                                onclick="openModal('assets/LUNA FINAL.pdf')">View
+                                Case Study <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-row reveal">
+                        <div class="project-img">
+                            <img src="assets/Gemini_Generated_Image_eedbjleedbjleedb.png" alt="Wakefit"
+                                onerror="this.style.background='linear-gradient(135deg,#F7F4EF,#E8EDFF)'">
+                        </div>
+                        <div class="project-content">
+                            <p class="project-tag">L&D Design · Capability Framework · Wakefit</p>
+                            <h3 class="project-title">Wakefit</h3>
+                            <p class="project-type">Strategic Design Content & Learning Architecture</p>
+                            <div class="metric-chip">
+                                <span class="label">Outcome</span>
+                                <span class="value">Scalable Excellence Framework</span>
+                            </div>
+                            <p class="project-desc">Built a comprehensive L&D curriculum and professional capability
+                                frameworks for modular kitchens, wardrobes, and spatial consulting — enabling scalable
+                                design excellence across teams.</p>
+                            <div class="skill-tags">
+                                <span class="skill-tag">L&D Design</span>
+                                <span class="skill-tag">Capability Frameworks</span>
+                                <span class="skill-tag">Design Ops</span>
+                                <span class="skill-tag">Content Strategy</span>
+                            </div>
+                            <a href="#reach-out" class="case-link">Reach out for Quick View <i
+                                    class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOCUS TODAY -->
+        <section class="section alt-bg">
+            <div class="container">
+                <div class="focus-today-v2 reveal">
+                    <div>
+                        <h3>My Focus Today</h3>
+                        <p>I work at the intersection of design, systems, and business performance. I help teams
                             understand why strong creative effort sometimes fails to convert into results. My role is to
-                            bring clarity, structure and alignment to how design decisions are made,
-                            reviewed and executed. I specialise in helping teams: use time and effort more effectively,
-                            prioritise what actually moves the needle, translate everyday design decisions into
-                            measurable outcomes.</li>
-                    </ul>
-                    <p class="closing-statement">
-                        If you have a team that's talented and hardworking but still struggling with unclear processes,
-                        subjective feedback loops, rework, or effort that doesn't convert into numbers — that's where I
-                        can help.
-                    </p>
+                            bring clarity, structure, and alignment to how design decisions are made, reviewed, and
+                            executed.</p>
+                        <br>
+                        <p style="font-weight:600;opacity:0.9;margin-top:12px">If your team is talented and hardworking
+                            but struggling with unclear processes, subjective feedback, rework, or effort that doesn't
+                            convert - that's exactly where I help.</p>
+                    </div>
+                    <div>
+                        <ul class="focus-items">
+                            <li class="focus-item">
+                                <div class="focus-item-icon"><i class="ri-timer-line"></i></div>
+                                <div>
+                                    <h5>Time & Effort Efficiency</h5>
+                                    <p>Use time and energy more effectively — no more wasted effort on work that doesn't
+                                        move the needle.</p>
+                                </div>
+                            </li>
+                            <li class="focus-item">
+                                <div class="focus-item-icon"><i class="ri-focus-line"></i></div>
+                                <div>
+                                    <h5>Prioritisation</h5>
+                                    <p>Identify and focus on what actually drives conversion and business performance.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="focus-item">
+                                <div class="focus-item-icon"><i class="ri-bar-chart-line"></i></div>
+                                <div>
+                                    <h5>Measurable Outcomes</h5>
+                                    <p>Translate everyday design decisions into metrics that matter to the business.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!--Skills Section -->
-        <section id="skills" class="hero-section">
+        <!-- SKILLS -->
+        <section id="skills" class="section">
             <div class="container">
-                <div class="focus-areas">
-                    <h3>Skills:</h3>
-                    <ul>
-                        <li>Figma, Indesign, Photoshop, Procreate</li>
-                        <li>AutoAD, Sketchup, Enscape</li>
-                        <li>Microsoft Office, Google Workspaces</li>
-                    </ul>
+                <p class="section-label">Capabilities</p>
+                <h2 class="section-title" style="margin-bottom:48px">Skills &<em
+                        style="font-style:italic;color:var(--blue)"> tools</em></h2>
+                <div class="skills-grid reveal">
+                    <div class="skill-group">
+                        <p class="skill-group-title">Design Tools</p>
+                        <ul class="skill-list">
+                            <li>Figma</li>
+                            <li>Adobe InDesign</li>
+                            <li>Photoshop</li>
+                            <li>Procreate</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <p class="skill-group-title">AI & Research</p>
+                        <ul class="skill-list">
+                            <li>NotebookLM</li>
+                            <li>Claude</li>
+                            <li>AI-assisted workflows</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <p class="skill-group-title">Productivity</p>
+                        <ul class="skill-list">
+                            <li>Microsoft Office</li>
+                            <li>Google Workspace</li>
+                            <li>Notion</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <p class="skill-group-title">3D & Space</p>
+                        <ul class="skill-list">
+                            <li>AutoCAD</li>
+                            <li>SketchUp</li>
+                            <li>Enscape</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Offerings Section -->
-        <section id="offerings" class="offerings-section">
+        <!-- OFFERINGS -->
+        <section id="offerings" class="section alt-bg">
             <div class="container">
-                <h3 class="section-heading-center">Offerings & Expertise</h3>
-                <p class="section-subheading-center">(Ways we can work together)</p>
-
+                <p class="section-label">Services</p>
+                <h2 class="section-title">Offerings & <em style="font-style:italic;color:var(--blue)">expertise</em>
+                </h2>
+                <p class="section-sub" style="margin:16px 0 56px">Ways we can work together</p>
                 <div class="offerings-grid">
-                    <div class="offering-card">
-                        <h4>Systems Design - Design Excellence Consulting</h4>
-                        <p>for Design Teams & Businesses</p>
+                    <div class="offering-card-v2 reveal">
+                        <div class="offering-icon"><i class="ri-settings-4-line"></i></div>
+                        <h4>Design Operations</h4>
+                        <p>Systematize your design process — from brief intake to final delivery — so it works without
+                            you.</p>
                     </div>
-                    <div class="offering-card">
-                        <h4>Learning content & Curriculum Design</h4>
-                        <p>for Academia and Professional Training</p>
+                    <div class="offering-card-v2 reveal">
+                        <div class="offering-icon"><i class="ri-layout-grid-line"></i></div>
+                        <h4>Systems Design</h4>
+                        <p>Build robust design systems, SOPs, and stage-gates that scale with your team and business.
+                        </p>
                     </div>
-                    <div class="offering-card">
-                        <h4>Spatial and Interior Design Consulting</h4>
-                        <p>for Home Owners and Small Businesses</p>
+                    <div class="offering-card-v2 reveal">
+                        <div class="offering-icon"><i class="ri-bar-chart-box-line"></i></div>
+                        <h4>Design Excellence Consulting</h4>
+                        <p>Align creative effort with business outcomes — and make that alignment measurable.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- FOOTER -->
         <footer id="reach-out" class="footer">
-            <div class="container footer-content">
-                <h2 class="cta">Lets Connect!</h2>
-
-                <div class="social-placeholders">
-                    <a href="mailto:nupur.biswas1521@gmail.com" class="social-icon" aria-label="Email">
-                        <i class="ri-mail-line"></i>
-                    </a>
-                    <a href="tel:+917899917741" class="social-icon" aria-label="Phone">
-                        <i class="ri-phone-line"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/nupur-d-biswas" target="_blank" class="social-icon"
-                        aria-label="LinkedIn">
-                        <i class="ri-linkedin-fill"></i>
-                    </a>
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="footer-brand">
+                        <h2>Let's Connect</h2>
+                        <p>If you're building something where design and business outcomes need to work together — I'd
+                            love to talk.</p>
+                    </div>
+                    <div class="footer-contact">
+                        <h4>Reach out directly</h4>
+                        <ul class="contact-links">
+                            <li>
+                                <a href="mailto:nupur.biswas1521@gmail.com" class="contact-link">
+                                    <div class="contact-icon"><i class="ri-mail-line"></i></div>
+                                    nupur.biswas1521@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+917899917741" class="contact-link">
+                                    <div class="contact-icon"><i class="ri-phone-line"></i></div>
+                                    +91 78999 17741
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://linkedin.com/in/nupur-d-biswas" target="_blank" class="contact-link">
+                                    <div class="contact-icon"><i class="ri-linkedin-fill"></i></div>
+                                    linkedin.com/in/nupur-d-biswas
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-
-                <p class="copyright">© 2026 Nupur Biswas. All rights reserved.</p>
+                <div class="footer-bottom">
+                    <p>© 2026 Nupur Biswas. All rights reserved.</p>
+                    <p>Systems · Design · Experience · Product</p>
+                </div>
             </div>
         </footer>
 
@@ -392,53 +529,14 @@
 
     <!-- PDF Modal -->
     <div id="pdf-modal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(event)"><i class="ri-close-line"></i></span>
-            <div class="pdf-wrapper">
-                <iframe id="pdf-iframe" src=""></iframe>
+        <div class="modal-inner" onclick="event.stopPropagation()">
+            <div class="modal-close" onclick="closeModal(event)">
+                <i class="ri-close-line"></i> close
             </div>
+            <iframe id="pdf-iframe" src=""></iframe>
         </div>
     </div>
 
-    <script>
-        // Hamburger Menu Logic
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const closeMenu = document.querySelector('.close-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        });
-
-        const closeMobileMenu = () => {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        };
-
-        closeMenu.addEventListener('click', closeMobileMenu);
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Modal Logic
-        function openModal(pdfUrl) {
-            document.getElementById('pdf-iframe').src = pdfUrl + "#toolbar=0&navpanes=0&scrollbar=0";
-            document.getElementById('pdf-modal').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
-
-        function closeModal(event) {
-            if (event) event.preventDefault();
-            document.getElementById('pdf-modal').classList.remove('active');
-            setTimeout(() => {
-                document.getElementById('pdf-iframe').src = '';
-            }, 300); // Clear after transition
-            document.body.style.overflow = 'auto';
-        }
-    </script>
     <script src="particles.js"></script>
 </body>
 

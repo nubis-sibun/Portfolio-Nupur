@@ -684,11 +684,18 @@ a, button, .clickable { cursor: none; }
     .hero-left { padding: 100px 24px 48px; }
     .hero-right { padding: 40px 24px; }
     .stat-strip { gap: 24px; }
-    .flow-track { flex-direction: column; gap: 16px; }
-    .flow-connector { padding: 8px 0; }
-    .flow-connector-line { width: 1.5px; height: 24px; }
-    .flow-connector-line::after { content: '›'; right: -8px; top: 6px; }
-    .connector-label { top: auto; left: auto; right: -60px; top: 50%; transform: translateY(-50%); }
+    .flow-track { flex-direction: column; gap: 8px; }
+    .flow-connector { padding: 12px 0; }
+    .flow-connector-line { width: 1px; height: 32px; background: var(--line); }
+    .flow-connector-line::after { 
+        content: '↓'; position: absolute; left: 50%; bottom: -10px; 
+        transform: translateX(-50%); color: var(--muted); font-size: 1.2rem;
+        right: auto; top: auto;
+    }
+    .connector-label { 
+        position: absolute; left: 24px; top: 50%; transform: translateY(-50%);
+        right: auto; font-size: 0.7rem; text-align: left;
+    }
     .steps-v2 { grid-template-columns: 1fr; }
     .focus-today-v2 { padding: 40px 24px; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
@@ -696,18 +703,22 @@ a, button, .clickable { cursor: none; }
     .section { padding: 72px 0; }
     .profile-wrap { width: 220px; height: 280px; }
     .project-content { padding: 32px 24px; }
-    .gap-row { grid-template-columns: 80px 1fr; gap: 12px; }
-    .gap-connector-row { grid-template-columns: 80px 1fr; gap: 12px; }
-    .gap-stage-name { font-size: 0.75rem; }
+    .gap-row { grid-template-columns: 1fr; gap: 8px; }
+    .gap-connector-row { grid-template-columns: 1fr; gap: 0; height: 32px; }
+    .gap-stage-name { text-align: left; font-size: 0.8rem; }
+    .gap-connector-visual { padding-left: 0; justify-content: flex-start; }
+    .gap-connector-line { margin-left: 16px; height: 32px; }
+    .gap-badge { font-size: 0.65rem; padding: 2px 8px; }
+    .gap-bar-wrap { height: 40px; }
+    .gap-bar { font-size: 0.7rem; padding: 0 8px; }
     .problem-band { padding: 40px 24px; }
     .problem-item { padding: 20px 0; }
+    .offerings-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
 
 @media (max-width: 480px) {
     .skills-grid { grid-template-columns: 1fr; }
-    .stat-strip { flex-direction: column; gap: 16px; }
-    .offerings-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
     .hero-title { font-size: clamp(1.8rem, 6vw, 2.5rem); }
     .profile-wrap { width: 180px; height: 230px; }
 }

@@ -1,5 +1,5 @@
 /* ===========================
-   Nupur Portfolio — Scripts
+   Nupur Portfolio - Scripts
    Cursor, Nav, Hamburger, Reveal, Modal, Particles
    =========================== */
 

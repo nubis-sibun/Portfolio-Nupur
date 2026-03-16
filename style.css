@@ -1,5 +1,5 @@
 /* ===========================
-   Nupur Biswas Portfolio — CSS
+   Nupur Biswas Portfolio - CSS
    Fonts: Raleway (sans) + Merriweather (serif)
    Font sizes: 0.75rem, 0.9rem, 1rem, clamp headings
    =========================== */
@@ -1318,7 +1318,7 @@ button,
 }
 
 /* =========================
-   RESPONSIVE — Fluid Layout
+   RESPONSIVE - Fluid Layout
    ========================= */
 @media (max-width: 1024px) {
     .hero {

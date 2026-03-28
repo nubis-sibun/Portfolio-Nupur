@@ -25,7 +25,7 @@ document.querySelectorAll('a,button,.clickable').forEach(el => {
     el.addEventListener('mouseenter', () => {
         cursor.style.width = '16px'; cursor.style.height = '16px';
         cursorRing.style.width = '52px'; cursorRing.style.height = '52px';
-        cursorRing.style.borderColor = 'var(--blue)';
+        cursorRing.style.borderColor = 'var(--theme)';
     });
     el.addEventListener('mouseleave', () => {
         cursor.style.width = '10px'; cursor.style.height = '10px';
@@ -82,7 +82,7 @@ const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
 let w, h, particles = [], mouse = { x: null, y: null };
 const RAYS = 28, DOTS = 12;
-const palette = ['#1A3FD8', '#3B5BDB', '#6B6560', '#0D0D0D'];
+const palette = ['#FF5E3A', '#2D3047', '#E05D44', '#1A1A1A'];
 
 function resize() {
     w = canvas.width = window.innerWidth;
